@@ -1,0 +1,15 @@
+[Unit]
+Description=omen88d2 fan control daemon (HP OMEN 15-en1xxx, board 88D2)
+After=multi-user.target
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/omen88d2 auto --config /etc/omen88d2/config.toml
+Restart=on-failure
+RestartSec=15
+Nice=-5
+
+[Install]
+WantedBy=multi-user.target

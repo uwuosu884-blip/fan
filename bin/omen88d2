@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""Launcher: makes the bundled package importable, then runs the CLI."""
+import os
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+
+from omen88d2.cli import main
+
+if __name__ == "__main__":
+    sys.exit(main())

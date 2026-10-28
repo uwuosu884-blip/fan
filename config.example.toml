@@ -1,0 +1,18 @@
+# omen88d2 example config — copy to /etc/omen88d2/config.toml and tune.
+# Levels are 0-55, roughly 100 RPM each (55 ~= 5500 rpm max).
+
+poll_interval = 2.0     # seconds between temp reads / EC updates
+keepalive_below = 60    # refresh the firmware countdown when <= this (seconds)
+keepalive_set = 120     # refresh the countdown to this (seconds, max 255)
+temp_fail_max = 3       # consecutive sensor failures before giving up to BIOS
+min_level = 5           # floor for curve output (both fans)
+max_level = 55          # ceiling for curve output (both fans)
+max_step_up = 6         # max level increase per poll (smooth spin-up)
+max_step_down = 4       # max level decrease per poll (smooth spin-down)
+critical_temp = 95.0    # at/above: force max_level on both fans, keep running
+emergency_temp = 100.0  # at/above: release to BIOS and exit(2)
+log_every = 15          # info-level status line every N polls
+
+# [temp C, level] points, temps ascending. Between points: linear interp.
+cpu_curve = [[40, 6], [50, 10], [60, 18], [70, 28], [80, 40], [90, 52]]
+gpu_curve = [[40, 6], [50, 10], [60, 18], [70, 30], [80, 42], [90, 52]]
