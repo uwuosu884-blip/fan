@@ -4,7 +4,9 @@
 import os
 import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# realpath: installed as /usr/local/bin/omen88d2 -> /opt/omen88d2/bin/omen88d2,
+# so resolve the symlink to find the real project root.
+ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.insert(0, ROOT)
 
 from omen88d2.cli import main

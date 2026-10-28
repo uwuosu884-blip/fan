@@ -38,6 +38,12 @@ talks to the EC through the stock `ec_sys` module.
   BIOS auto (verified by readback).
 - Single-instance lock for all control commands.
 
+### Fixed
+
+- Launcher resolves symlinks (`realpath`), fixing `ModuleNotFoundError`
+  when run via the `/usr/local/bin/omen88d2` symlink created by install.sh.
+  Covered by a regression test replicating the installed layout.
+
 ### Notes
 
 - Validated against the simulator (seeded with a real 88D2 EC dump) —
